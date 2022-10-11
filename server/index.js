@@ -15,27 +15,19 @@ app.use(express.urlencoded({extended: false}))
 
 const port = 3001
 
-//pevious one
-
-// app.get("/",(req,res) => {
-//     res.status(200).json({message: "Node server is responding"})
-// })
-
-//16 number changes here
-// creating route for where i open database connection
 
 app.get("/",async function (req,res) {
     try{
         const connection = await mysql.createConnection(config.db)
-        res.status(200).send('Database connection was made')
+        const [result,] = await connection.execute('select * from task')
+
+        if(!result) result = [] //if there is no data,this will return empty array
+        res.status(200).json(result)
 
     }catch(err){
-        res.status(200).send(err.message)
+        //return status code 500 and error message to the client.
+        res.status(500).json({error: err.message})
     }
 })
-
-// app.listen(port,() => {
-//     console.log('Server running on port ${port}')
-// })
 
 app.listen(port)
