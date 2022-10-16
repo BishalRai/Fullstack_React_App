@@ -27,3 +27,10 @@ async function UpdateTask(task) {
     const result = await db.query(`update task set description ='${task.description}' where id=${task.id}`)
     return task;
 }
+
+module.exports = {
+    getAllTasks,
+    addTask,
+    removeTask,
+    UpdateTask
+}
