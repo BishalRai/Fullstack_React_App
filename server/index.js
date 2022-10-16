@@ -28,7 +28,8 @@ app.get("/",async function (req,res) {
         //routes do not call database straight on, they call database using querry function from db
         const result = await db.query('select * from task')
 
-        if(!result) result = [] //if there is no data,this will return empty array
+        //if there is no data,this will return empty array
+        if(!result) result = [] 
         res.status(200).json(result)
 
     }catch(err){
