@@ -15,3 +15,9 @@ async function addTask(task) {
     task.id = result.insertId
     return task
 }
+
+//DELETE of CURD operation
+async function removeTask(id){
+    const result = await db.query(`delete from task where id = ${id}`)
+    return id
+}
