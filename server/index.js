@@ -53,7 +53,9 @@ app.post("/new",async function(req,res){
         //Execute prepared statement
         //const [result,] = await connection.execute('insert into task (description) values(?)',[req.body.description])
 
-        const result = await db.query('insert into task (description) values(?)', [req.params.description])
+        //const result = await db.query('insert into task (description) values(?)', [req.params.description])
+
+        const result = await todo.addTask(req.body)
 
         res.status(200).json({id:result.insertId})
     } catch(err) {
@@ -69,7 +71,10 @@ app.delete("/delete/:id", async function(req, res){
         //Execute prepared statement.
         //await connection.execute('delete from task where id = ?',[req.params.id])
 
-        await db.query('delete from task where id = ?', [req.params.id])
+        //await db.query('delete from task where id = ?', [req.params.id])
+
+        await todo.removeTask(req.params.id)
+        
         res.status(200).json({id:req.params.id})
     }catch(err){
         res.status(500).json({error: err.message})
