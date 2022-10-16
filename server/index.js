@@ -1,10 +1,10 @@
 const express = require("express")
 const cors = require('cors')
 
-//Database programming is done asynchronously so promises are used
-const mysql = require('mysql2/promise')
-//location of config file
-const config = require('./config')
+// //Database programming is done asynchronously so promises are used
+// const mysql = require('mysql2/promise')
+// //location of config file
+// const config = require('./config')
 
 
 const app = express()
