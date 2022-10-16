@@ -41,9 +41,13 @@ app.get("/",async function (req,res) {
 //for insert purpose
 app.post("/new",async function(req,res){
     try{
-        const connection = await mysql.createConnection(config.db)
+        //const connection = await mysql.createConnection(config.db)
+
         //Execute prepared statement
-        const [result,] = await connection.execute('insert into task (description) values(?)',[req.body.description])
+        //const [result,] = await connection.execute('insert into task (description) values(?)',[req.body.description])
+
+        const result = await db.query('insert into task (description) values(?)', [req.params.description])
+
         res.status(200).json({id:result.insertId})
     } catch(err) {
         res.status(500).json({error: err.message})
@@ -53,9 +57,12 @@ app.post("/new",async function(req,res){
 //for deletion
 app.delete("/delete/:id", async function(req, res){
     try{
-        const connection = await mysql.createConnection(config.db)
+        //const connection = await mysql.createConnection(config.db)
+
         //Execute prepared statement.
-        await connection.execute('delete from task where id = ?',[req.params.id])
+        //await connection.execute('delete from task where id = ?',[req.params.id])
+
+        await db.query('delete from task where id = ?', [req.params.id])
         res.status(200).json({id:req.params.id})
     }catch(err){
         res.status(500).json({error: err.message})
