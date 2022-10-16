@@ -21,3 +21,9 @@ async function removeTask(id){
     const result = await db.query(`delete from task where id = ${id}`)
     return id
 }
+
+//UPDATE of CRUD operation
+async function UpdateTask(task) {
+    const result = await db.query(`update task set description ='${task.description}' where id=${task.id}`)
+    return task;
+}
