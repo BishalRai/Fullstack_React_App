@@ -7,7 +7,11 @@ const cors = require('cors')
 // const config = require('./config')
 
 //importing db js file here
-const db = require('./services/db')
+//const db = require('./services/db')
+
+//importing all the CRUD operation from services-->todo js file
+const todo = require('./services/todo')
+
 
 
 const app = express()
