@@ -12,7 +12,7 @@ const cors = require('cors')
 //importing all the CRUD operation from services-->todo js file
 //const todo = require('./services/todo')
 
-const todoRouter = requier('./router/todo')
+const todoRouter = require('./routes/todo')
 
 
 
