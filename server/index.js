@@ -30,7 +30,10 @@ app.get("/",async function (req,res) {
         //const [result,] = await connection.execute('select * from task')
 
         //routes do not call database straight on, they call database using querry function from db
-        const result = await db.query('select * from task')
+        //const result = await db.query('select * from task')
+
+        //using todo js file's functionality here
+        const result = await todo.getAllTasks()
 
         //if there is no data,this will return empty array
         if(!result) result = [] 
