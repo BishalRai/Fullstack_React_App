@@ -6,6 +6,9 @@ const cors = require('cors')
 // //location of config file
 // const config = require('./config')
 
+//importing db js file here
+const db = require('./services/db')
+
 
 const app = express()
 
