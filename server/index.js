@@ -22,8 +22,11 @@ const port = 3001
 
 app.get("/",async function (req,res) {
     try{
-        const connection = await mysql.createConnection(config.db)
-        const [result,] = await connection.execute('select * from task')
+        //const connection = await mysql.createConnection(config.db)
+        //const [result,] = await connection.execute('select * from task')
+
+        //routes do not call database straight on, they call database using querry function from db
+        const result = await db.query('select * from task')
 
         if(!result) result = [] //if there is no data,this will return empty array
         res.status(200).json(result)
