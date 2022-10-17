@@ -75,7 +75,22 @@ function remove(id){
       <ol>
          {/* adding HyperLink in each line for deletion of that line */}
          {tasks.map(task => (
-          <li key={task.id}>{task.description}<a href = "#" onClick={() => remove(task.id)}> Delete </a></li>
+          <li key={task.id}>
+            {editTask?.id !== task.id && 
+              task.description + ' '
+            }
+            {editTask?.id === task.id &&
+              <form>
+                <input value = {editDescription} onChange = {e => setEditDescription(e.target.value)} />
+                <button type = "button" onClick={null}>Save</button>
+                <button type='button' onClick={() => setEditTask(null)}>Cancel</button>
+              </form>
+            }
+            <a href = "#" onClick={() => remove(task.id)}> Delete </a>&nbsp;
+            { editTask === null &&
+              <a href ="#" onClick={() => setEditTask(task)}>Edit</a>
+            }
+          </li>
         ))}
       </ol>
     </div>
