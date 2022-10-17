@@ -48,7 +48,12 @@ function remove(id){
   }).catch(error =>{
     alert(error.response.data.error)
   })
+}
 
+//Function definition for retrieving a data in Update box from database.
+function setEditableRow(task) {
+  setEditTask(task)
+  setEditDescription(task.description)
 }
 
   useEffect(() => {
