@@ -93,7 +93,7 @@ function setEditableRow(task) {
             }
             <a href = "#" onClick={() => remove(task.id)}> Delete </a>&nbsp;
             { editTask === null &&
-              <a href ="#" onClick={() => setEditTask(task)}>Edit</a>
+              <a href ="#" onClick={() => setEditableRow(task)}>Edit</a>
             }
           </li>
         ))}
