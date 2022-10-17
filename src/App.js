@@ -8,7 +8,9 @@ function App() {
 
   const [tasks, setTasks] = useState([])
   const [task, setTask] = useState('')
-
+//for edit purpose define state variable 
+  const [editTask, setEditTask] = useState(null)
+  const [editDescription, setEditDescription] = useState('')
 
 
 
