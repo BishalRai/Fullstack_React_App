@@ -30,7 +30,7 @@ function save(){
     addedObject.id = response.data.id
     //Update state variable with newly added data.
     setTasks(tasks => [...tasks, addedObject])
-    //Detail state variable is emptied so user can start adding another task without deletion of previous info on the form
+    //Task state variable is emptied so user can start adding another task without deletion of previous info on the form
     setTask('')
   }).catch(error => {
     alert(error.response.data.error)
@@ -78,6 +78,7 @@ function edit() {
     //Reset state variables related to editing.
     setEditTask(null)
     setEditDescription('')
+    setTask('')
   }).catch(error => {
     alert(error.response.data.error)
   })
