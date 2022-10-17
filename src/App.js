@@ -56,6 +56,34 @@ function setEditableRow(task) {
   setEditDescription(task.description)
 }
 
+//for Edit/update purpose
+function edit() {
+  const json = JSON.stringify({id: editTask.id, description: editDescription})
+  axios.put(URL + 'edit',json,{
+    headers: {
+      'Content-Type' : 'application/json'
+    }
+  })
+  .then((response) =>{
+    //Convert stringifyed JSON object back to JavaScript object.
+    const editedObject = JSON.parse(json)
+    //Create copy of tasks state variable.
+    const tempArray = [...tasks]
+    //Find task that was being edited.
+    const index = tempArray.findIndex(task => {return task.id === editTask.id})
+    //If found, update description.
+    if(index !==-1) tempArray[index].description = editDescription
+    //Update state containing list of tasks.
+    setTask(tempArray)
+    //Reset state variables related to editing.
+    setEditTask(null)
+    setEditDescription('')
+  }).catch(error => {
+    alert(error.response.data.error)
+  })
+}
+
+
   useEffect(() => {
     axios.get(URL)
       .then((response) => {
