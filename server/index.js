@@ -27,6 +27,7 @@ app.use('/',todoRouter)
 
 const port = 3001
 
+//error handling done here to fetch the error.
 app.use((err,re,res,next) => {
     const statusCode = err.statusCode || 500
     console.error(err.message,err.stack)
