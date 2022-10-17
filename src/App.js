@@ -107,6 +107,7 @@ function edit() {
    
       <ol>
          {/* adding HyperLink in each line for deletion of that line */}
+         {/* also edit hyperlink added for edit purpose */}
          {tasks.map(task => (
           <li key={task.id}>
             {editTask?.id !== task.id && 
@@ -115,7 +116,7 @@ function edit() {
             {editTask?.id === task.id &&
               <form>
                 <input value = {editDescription} onChange = {e => setEditDescription(e.target.value)} />
-                <button type = "button" onClick={null}>Save</button>
+                <button type = "button" onClick={edit}>Save</button>
                 <button type='button' onClick={() => setEditTask(null)}>Cancel</button>
               </form>
             }
