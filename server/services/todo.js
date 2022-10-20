@@ -12,8 +12,7 @@ async function getAllTasks() {
 //CREATE of CRUD operation
 async function addTask(task) {
     const result = await db.query(`insert into task (description) values ('${task.description}')`) //here is back tick `` has use first after that '' quotation mark
-    //task.id = result.InsertId
-    task.id = result
+    task.id = result.insertId
     return task
 }
 
